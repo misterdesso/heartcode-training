@@ -3,8 +3,8 @@ import Lethal_Company from "../assets/test.png"
 
 export default function AboutMe() {
   return (
-    <div>
-      <div>I am Jin Kai</div>
+    <div className="p-3">
+      <div>I am Jin Kai and I love coding frfr</div>
       <Image src={Lethal_Company} width={1000} height={1000} alt="Lethal Company" />
     </div>
   );
