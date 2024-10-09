@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Lethal_Company from "../assets/test.png"
+import Lethal_Company from "../assets/lethal_company.png"
 
 export default function AboutMe() {
   return (

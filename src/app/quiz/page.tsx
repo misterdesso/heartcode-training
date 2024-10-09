@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 const FormSchema = z.object({
   name: z.string({
@@ -19,28 +20,60 @@ const FormSchema = z.object({
   }),
   question1: z.string({
     required_error: "Please select an option"
+  }),
+  question2: z.string({
+    required_error: "Please select an option"
+  }),
+  question3: z.string({
+    required_error: "Please select an option"
   })
 })
 
+const defaultValues = {
+  name: "",
+  question1: "", question2: "", question3: ""
+};
+
+
 export default function Quiz() {
   const { toast } = useToast();
+  const [score, setCalculateScore] = useState<number>(0);
+  const [IsSubmitted, setSubmitted] = useState(false);
 
   const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema)
+    resolver: zodResolver(FormSchema),
+    defaultValues
   })
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    if (data.question1 === "yes") {
+    if (IsSubmitted) {
       toast({
-        title: `Congratulations ${data.name}`,
-        description: "You are a drug dealer",
-      })
-    } else {
-      toast({
-        title: `Thank you ${data.name}`,
-        description: "Unfortunately you are not a drug dealer",
-      })
+        title: "You've already submitted your answers!",
+        description: "Refresh the page to try again.",
+      });
+      return;
     }
+
+    if (data.question1 === "2") {
+      setCalculateScore((prevScore) => prevScore + 1)
+    }
+    if (data.question2 === "3") {
+      setCalculateScore((prevScore) => prevScore + 1)
+    }
+    if (data.question3 === "4") {
+      setCalculateScore((prevScore) => prevScore + 1)
+    }
+
+    setSubmitted(true);
+
+    setCalculateScore((prevScore) => {
+      const newScore = prevScore;
+      toast({
+        title: `Congratulations ${data.name}! Your score is ${newScore}`,
+        description: "Refresh the page to try again",
+      });
+      return newScore;
+    });
   }
 
   return (
@@ -60,12 +93,13 @@ export default function Quiz() {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="question1"
           render={({ field }) => (
             <FormItem className="p-3">
-              <FormLabel>Do you sell drugs?</FormLabel>
+              <FormLabel>Which of the following are illegal substances in Singapore?</FormLabel>
               <FormDescription></FormDescription>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
@@ -74,8 +108,59 @@ export default function Quiz() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="yes">Yes</SelectItem>
-                  <SelectItem value="no">No</SelectItem>
+                  <SelectItem value="1">Paracetamol</SelectItem>
+                  <SelectItem value="2">Methamphetamine</SelectItem>
+                  <SelectItem value="3">Ibuprofen</SelectItem>
+                  <SelectItem value="4">Sertraline</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="question2"
+          render={({ field }) => (
+            <FormItem className="p-3">
+              <FormLabel>What is the maximum jail time for abusing controlled drugs in Singapore?</FormLabel>
+              <FormDescription></FormDescription>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="1">1 year</SelectItem>
+                  <SelectItem value="2">5 years</SelectItem>
+                  <SelectItem value="3">10 years</SelectItem>
+                  <SelectItem value="4">20 years</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="question3"
+          render={({ field }) => (
+            <FormItem className="p-3">
+              <FormLabel>What is the most common reason why people start abusing drugs?</FormLabel>
+              <FormDescription></FormDescription>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="1">Curiosity</SelectItem>
+                  <SelectItem value="2">Stress relief</SelectItem>
+                  <SelectItem value="3">Peer pressure</SelectItem>
+                  <SelectItem value="4">All of the above</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -89,58 +174,3 @@ export default function Quiz() {
     </Form>
   )
 }
-
-// import { Input } from "@/components/input/input";
-
-// export default function Quiz() {
-//   return (
-//     <div className="p-3">
-//       <div>
-//         <p>
-//           Username
-//         </p>
-//       </div>
-//       <div className="py-1">
-//         <Input type="user" placeholder="John" />
-//       </div>
-//       <div>
-//         <p className="text-xs text-gray-400">
-//           This is your public display name
-//         </p>
-//       </div>
-
-//       <div className="py-3">
-//         <div>
-//           <p>
-//             What is the maximum penalty for drug abuse in Singapore?
-//           </p>
-//         </div>
-//         <div className="py-1">
-//           <Input type="user" placeholder="Answer" />
-//         </div>
-//       </div>
-
-//       <div className="py-3">
-//         <div>
-//           <p>
-//             Question 2
-//           </p>
-//         </div>
-//         <div className="py-1">
-//           <Input type="user" placeholder="Answer" />
-//         </div>
-//       </div>
-
-//       <div className="py-3">
-//         <div>
-//           <p>
-//             Question 3
-//           </p>
-//         </div>
-//         <div className="py-1">
-//           <Input type="user" placeholder="Answer" />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
