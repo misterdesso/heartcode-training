@@ -26,6 +26,12 @@ const FormSchema = z.object({
   }),
   question3: z.string({
     required_error: "Please select an option"
+  }),
+  question4: z.string({
+    required_error: "Please select an option"
+  }),
+  question5: z.string({
+    required_error: "Please select an option"
   })
 })
 
@@ -33,7 +39,6 @@ const defaultValues = {
   name: "",
   question1: "", question2: "", question3: ""
 };
-
 
 export default function Quiz() {
   const { toast } = useToast();
@@ -60,7 +65,13 @@ export default function Quiz() {
     if (data.question2 === "3") {
       setCalculateScore((prevScore) => prevScore + 1)
     }
-    if (data.question3 === "4") {
+    if (data.question3 === "1") {
+      setCalculateScore((prevScore) => prevScore + 1)
+    }
+    if (data.question4 === "2") {
+      setCalculateScore((prevScore) => prevScore + 1)
+    }
+    if (data.question5 === "4") {
       setCalculateScore((prevScore) => prevScore + 1)
     }
 
@@ -78,7 +89,7 @@ export default function Quiz() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w2/3 space-y-2">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w2/3 space-y-1">
         <FormField
           control={form.control}
           name="name"
@@ -93,7 +104,6 @@ export default function Quiz() {
             </FormItem>
           )}
         />
-
         <FormField
           control={form.control}
           name="question1"
@@ -118,7 +128,6 @@ export default function Quiz() {
             </FormItem>
           )}
         />
-
         <FormField
           control={form.control}
           name="question2"
@@ -148,7 +157,53 @@ export default function Quiz() {
           name="question3"
           render={({ field }) => (
             <FormItem className="p-3">
-              <FormLabel>What is the most common reason why people start abusing drugs?</FormLabel>
+              <FormLabel>What is the primary active ingredient in marijuana?</FormLabel>
+              <FormDescription></FormDescription>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="1">THC</SelectItem>
+                  <SelectItem value="2">Nicotine</SelectItem>
+                  <SelectItem value="3">Weed</SelectItem>
+                  <SelectItem value="4">Caffeine</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="question4"
+          render={({ field }) => (
+            <FormItem className="p-3">
+              <FormLabel>True or False: Prescription drugs are always safe to use if they are prescribed by a doctor.</FormLabel>
+              <FormDescription></FormDescription>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="1">True</SelectItem>
+                  <SelectItem value="2">False</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="question5"
+          render={({ field }) => (
+            <FormItem className="p-3">
+              <FormLabel>What is the most common reason why people start using drugs?</FormLabel>
               <FormDescription></FormDescription>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>

@@ -21,7 +21,7 @@ export default function NavBar() {
             <NavigationMenuItem>
               <Link href="/" passHref>
                 <button className="p-2 py-1 rounded bg-transparent hover:bg-gray-100 dark:hover:bg-gray-900">
-                  Home
+                  <p className="font-medium">Home</p>
                 </button>
               </Link>
             </NavigationMenuItem>
@@ -29,7 +29,7 @@ export default function NavBar() {
             <NavigationMenuItem>
               <Link href="/quiz" passHref>
                 <button className="p-2 py-1 rounded bg-transparent hover:bg-gray-100 dark:hover:bg-gray-900">
-                  Quiz
+                <p className="font-medium">Quiz</p>
                 </button>
               </Link>
             </NavigationMenuItem>
@@ -37,7 +37,7 @@ export default function NavBar() {
             <NavigationMenuItem>
               <Link href="/about" passHref>
                 <button className="p-2 py-1 rounded bg-transparent hover:bg-gray-100 dark:hover:bg-gray-900">
-                  About
+                <p className="font-medium">About</p>
                 </button>
               </Link>
             </NavigationMenuItem>

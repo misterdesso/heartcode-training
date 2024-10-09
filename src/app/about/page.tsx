@@ -5,7 +5,7 @@ export default function AboutMe() {
   return (
     <div className="p-3">
       <div>
-        <p className="font-bold">I am Jin Kai and welcome to my site!</p>
+        <p className="font-semibold">I am Jin Kai and welcome to my site!</p>
       </div>
       <div>
         <p>Interests: Gaming</p>
