@@ -4,20 +4,20 @@ import {
 	AccordionContent,
 	AccordionItem,
 	AccordionTrigger,
-} from "@/components/ui/accordion"
+} from "@/components/ui/accordion";
 
 export default function Home() {
 	const words: string[] = ["Destructive.", "Life-Altering.", "Chaotic."];
 
 	return (
 		<div>
-			<div className="flex flex-col h-[calc(100vh-60px)] items-center justify-center">
-				<h1 className="font-bold text-5xl">Drugs Can Be
+			<div className="flex flex-col h-[calc(100vh-60px)] items-center justify-center text-center">
+				<h1 className="font-bold text-4xl sm:text-5xl">Drugs Can Be
 					<FlipWords words={words} />
 				</h1>
 				<p className="py-3 text-lg text-gray-400">Scroll to learn more about its harmful effects.</p>
 			</div>
-			<div className="px-6 py-2">
+			<div className="px-4 sm:px-6 py-2">
 				<Accordion type="single" collapsible className="w-full">
 					<AccordionItem value="item-1">
 						<AccordionTrigger className="text-lg font-semibold">Addiction</AccordionTrigger>
@@ -46,6 +46,5 @@ export default function Home() {
 				</Accordion>
 			</div>
 		</div>
-	)
+	);
 }
-
