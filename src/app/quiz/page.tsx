@@ -19,25 +19,24 @@ const FormSchema = z.object({
     message: "Name must not be longer than 20 characters"
   }),
   question1: z.string({
-    required_error: "Please select an option"
+    required_error: "Please select an answer"
   }),
   question2: z.string({
-    required_error: "Please select an option"
+    required_error: "Please select an answer"
   }),
   question3: z.string({
-    required_error: "Please select an option"
+    required_error: "Please select an answer"
   }),
   question4: z.string({
-    required_error: "Please select an option"
+    required_error: "Please select an answer"
   }),
   question5: z.string({
-    required_error: "Please select an option"
+    required_error: "Please select an answer"
   })
 })
 
 const defaultValues = {
   name: "",
-  question1: "", question2: "", question3: ""
 };
 
 export default function Quiz() {

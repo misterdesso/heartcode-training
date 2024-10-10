@@ -16,6 +16,14 @@ export default function NavBar() {
   return (
     <nav className="sticky top-0 z-10 bg-white dark:bg-gray-900 shadow">
       <div className="flex p-2 justify-between w-full">
+        <div className="flex px-1">
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </div>
         <NavigationMenu>
           <NavigationMenuList className="flex space-x-4">
             <NavigationMenuItem>
@@ -29,7 +37,7 @@ export default function NavBar() {
             <NavigationMenuItem>
               <Link href="/quiz" passHref>
                 <button className="p-2 py-1 rounded bg-transparent hover:bg-gray-100 dark:hover:bg-gray-900">
-                <p className="font-medium">Quiz</p>
+                  <p className="font-medium">Quiz</p>
                 </button>
               </Link>
             </NavigationMenuItem>
@@ -37,22 +45,14 @@ export default function NavBar() {
             <NavigationMenuItem>
               <Link href="/about" passHref>
                 <button className="p-2 py-1 rounded bg-transparent hover:bg-gray-100 dark:hover:bg-gray-900">
-                <p className="font-medium">About</p>
+                  <p className="font-medium">About</p>
                 </button>
               </Link>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <div className="flex items-center">
+        <div className="flex">
           <ModeToggle />
-          <div className="flex px-2">
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </div>
         </div>
       </div>
     </nav>
