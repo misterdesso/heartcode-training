@@ -202,7 +202,7 @@ export default function Quiz() {
           name="question5"
           render={({ field }) => (
             <FormItem className="p-3">
-              <FormLabel>What is the most common reason why people start using drugs?</FormLabel>
+              <FormLabel>What are common reasons why people start using drugs?</FormLabel>
               <FormDescription></FormDescription>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
