@@ -97,7 +97,7 @@ export default function Quiz() {
               <FormLabel>What is your name?</FormLabel>
               <FormDescription></FormDescription>
               <FormControl>
-                <Input placeholder="Jin Kai" {...field} />
+                <Input placeholder="Name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

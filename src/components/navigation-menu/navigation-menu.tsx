@@ -28,7 +28,7 @@ export default function NavBar() {
           <NavigationMenuList className="flex space-x-4">
             <NavigationMenuItem>
               <Link href="/" passHref>
-                <button className="p-2 py-1 rounded bg-transparent hover:bg-gray-100 dark:hover:bg-gray-900">
+                <button className="p-2 py-1 rounded bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800">
                   <p className="font-medium">Home</p>
                 </button>
               </Link>
@@ -36,7 +36,7 @@ export default function NavBar() {
 
             <NavigationMenuItem>
               <Link href="/quiz" passHref>
-                <button className="p-2 py-1 rounded bg-transparent hover:bg-gray-100 dark:hover:bg-gray-900">
+                <button className="p-2 py-1 rounded bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800">
                   <p className="font-medium">Quiz</p>
                 </button>
               </Link>
@@ -44,7 +44,7 @@ export default function NavBar() {
 
             <NavigationMenuItem>
               <Link href="/about" passHref>
-                <button className="p-2 py-1 rounded bg-transparent hover:bg-gray-100 dark:hover:bg-gray-900">
+                <button className="p-2 py-1 rounded bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800">
                   <p className="font-medium">About</p>
                 </button>
               </Link>
