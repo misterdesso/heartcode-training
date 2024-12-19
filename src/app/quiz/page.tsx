@@ -16,7 +16,7 @@ const FormSchema = z.object({
   }).min(2, {
     message: "Name must be more than 2 characters long"
   }).max(20, {
-    message: "Name must not be longer than 20 characters"
+    message: "Name must be no longer than 20 characters"
   }),
   question1: z.string({
     required_error: "Please select an answer"
@@ -202,7 +202,7 @@ export default function Quiz() {
           name="question5"
           render={({ field }) => (
             <FormItem className="p-3">
-              <FormLabel>What are common reasons why people start using drugs?</FormLabel>
+              <FormLabel>Why may people start abusing drugs?</FormLabel>
               <FormDescription></FormDescription>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
